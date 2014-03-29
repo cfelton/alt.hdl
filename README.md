@@ -2,7 +2,7 @@ This repository includes the examples used in the
 [EELive 2014 Hardware Design and the Grunge Era](http://www.eeliveshow.com/sanjose/schedule-builder/session-id/827205) 
 presentation.  In each example directory is a directory for 
 each alt.hdl: 
-[bsv](bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
+[bsv (bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
 [chisel](https://chisel.eecs.berkeley.edu/), 
 [myhdl](http://www.myhdl.org), 
 and a *test_verilogs* directories.  The source for 
