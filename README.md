@@ -58,7 +58,9 @@ This example was mentioned briefly in the presentation.  It
 is a counter that counts up to 31 and then toggles between
 31 and 30.
 
-Example source [bsv](), [chisel](), and [myhdl]().
+Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex1_wprcnt/bsv/useless_counter.bsv), 
+[chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex1_wprcnt/chisel/useless_counter.scala), 
+and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex1_wprcnt/myhdl/useless_counter.py).
 
 
 Add and Scale (ex2\_mathadds)
