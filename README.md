@@ -2,21 +2,21 @@ This repository includes the examples used in the
 [EELive 2014 Hardware Design and the Grunge Era](http://www.eeliveshow.com/sanjose/schedule-builder/session-id/827205) 
 presentation.  In each example directory is a directory for 
 each alt.hdl: 
-[*bsv* (bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
-[*chisel*](https://chisel.eecs.berkeley.edu/), 
-[*myhdl*](http://www.myhdl.org), 
+[bsv](bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
+[chisel](https://chisel.eecs.berkeley.edu/), 
+[myhdl](http://www.myhdl.org), 
 and a *test_verilogs* directories.  The source for 
 each language is in the respective directories.  The *test_verilogs* 
-is a test environment to test each of the generated Verilog, 
+is a test environment to verify each of the generated Verilogs, 
 this way each implementation can be verified via a single 
 test environment.  
 
-This repository contains two groups of examples, the first: 
-*complete* are the examples used in the presentation and are
+This repository contains two groups of examples: 
+**complete** are the examples used in the presentation and are
 fully finished and working examples.  The second, set of 
 examples are slightly larger examples but were not included
-in the presentation and (as last writing) are incomplete
-(since they were not used, less motivation to complete :)
+in the presentation and (as last writing) are **incomplete**
+(since they were not used, less motivation to complete them :)
 
     Complete Examples (used in the presentation)
        ex1_wprcnt
@@ -42,19 +42,15 @@ examples are:
    comparisons were made in the presentation the goal of
    the presentation was simply to introduce the three 
    alt.hdls.  These examples are not exhaustive or complete
-   to be considered as a source for language comparison.  
-   For instance, the examples do not include a traditional 
+   to be considered as a source for language comparison.  For 
+   instance, the examples do not include a traditional 
    state-machine design.
 
   
 Complete Examples 
 ===================
 The following four are complete examples used in the 
-presentation.  There is an art to the HDL examples in a 
-presentation.  You need examples that are complete (can 
-do something on there own, even if it is useless).  Examples 
-that are short (as in lines of code), it is not useful to 
-present and example that takes many slides.
+presentation. 
 
 A Useless Counter (ex1\_wprcnt)
 -------------------------------
@@ -73,7 +69,7 @@ and then multiplies by a constant (constant is parameterizable).
     v[n] = (x[n] + y[n]) * M
 
 This is a non-registered version.  A register version 
-is used in the *mathsys* example.
+is used in the *ex7\_mathsys* example.
 
 Example source [bsv](), [chisel](), and [myhdl]().
 
@@ -90,14 +86,14 @@ Example source [bsv](), [chisel](), and [myhdl]().
 Math SOP (ex4\_mathsop)
 -----------------------
 This is a basic sum-of-products (SOP) also known as a *finite impulse
-response* (FIR) filter.  The operation is simple a SOP but when you
+response* (FIR) filter.  The operation is a simple SOP but when you
 combine the usage of the sliding window of the input signal with
 a set of coefficients it becomes a FIR filter.
 
-This is an overdone data-path example - why in the world did
-I use it?  Couple reasons: it is useful to highlight
-some of the language features, it is enjoyable to look at the
-functional waveforms (not the binary signals but the filtered
+This is an overused data-path example - why in the world did
+I include it?  Couple reasons: it is useful to highlight
+some of the language features and it is enjoyable to look at the
+output waveforms (not the binary signals but the filtered
 digital signals).
 
 This example does not architecturally optimize the SOP for
