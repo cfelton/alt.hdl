@@ -41,7 +41,7 @@ examples are:
 *  **Not** a base for comparison.  Although some minor 
    comparisons were made in the presentation the goal of
    the presentation was simply to introduce the three 
-   alt.hdls.  These examples are not exhaustive or complete
+   alt.hdls.  These examples are not exhaustive
    to be considered as a source for language comparison.  For 
    instance, the examples do not include a traditional 
    state-machine design.
