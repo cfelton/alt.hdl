@@ -2,7 +2,10 @@
 package sop1;
 import Vector::*;
 
-// the two main parameters for this module
+// typically tick-defines are avoided - in this case since
+// this is the top-level (to be converted) it is difficult
+// to effectively make use of the polymorphic features.
+// In this case, punt and use tick-define.
 `define NTAPS 4
 `define NBITS 16
 `define SBITS 32

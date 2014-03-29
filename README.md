@@ -73,7 +73,9 @@ and then multiplies by a constant (constant is parameterizable).
 This is a non-registered version.  A register version 
 is used in the *ex7\_mathsys* example.
 
-Example source [bsv](), [chisel](), and [myhdl]().
+Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex2_mathadds/bsv/maths1.bsv), 
+[chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex2_mathadds/chisel/maths1.scala), 
+and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex2_mathadds/myhdl/maths1.py).
 
 
 Greatest Common Denominator (ex3\_zpexgcd)
@@ -82,7 +84,9 @@ Computes the greatest common denominator.  Two of the three
 alt.hdls provided this as an example - I was compelled to 
 include it in the presentation.
 
-Example source [bsv](), [chisel](), and [myhdl]().
+Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/bsv/gcd.bsv), 
+[chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/chisel/gcd.scala), 
+and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/myhdl/gcd.py).
 
 
 Math SOP (ex4\_mathsop)
@@ -103,7 +107,10 @@ a given design.  Example, often the clock rate is higher than
 the sample rate and a single multiplier can be shared 
 (time-multiplexed) in the SOP calculation.
 
-Example source [bsv](), [chisel](), and [myhdl]().
+Example source 
+[bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 
+[chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/chisel/sop1.scala), 
+and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/myhdl/sop1.py).
 
 
 Incomplete Examples

@@ -12,7 +12,7 @@ def mm_sop1(clock, reset, x, y, h):
     scale = int(len(x)/2)
 
     @always_seq(clock.posedge, reset=reset)
-    def logic():
+    def rtl():
         xd[0].next = x
         for ii in range(1,len(h)):
             xd[ii].next = xd[ii-1]
@@ -24,7 +24,7 @@ def mm_sop1(clock, reset, x, y, h):
 
         y.next = sop >> scale
 
-    return logic
+    return rtl
 
 #-----------------------------------------------------
 # create an instance and convert to Verilog

@@ -24,7 +24,9 @@ def mm_sop2(clock, reset, x, y, hs):
 
     return cgens, rtl_scale
 
-
+#-----------------------------------------------------
+# create an instance and convert to Verilog
+#-----------------------------------------------------
 clock = Signal(bool(0))
 reset = ResetSignal(0, active=0, async=True)
 x = Signal(intbv(0, min=-2**15, max=2**15))
