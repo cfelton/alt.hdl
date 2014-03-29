@@ -132,10 +132,10 @@ Median filter example source [bsv](), [chisel](), and [myhdl]().
 VGA system (ex6\_vgasys)
 ------------------------
 This example is a straightforward VGA system, although VGA is
-not as useful - it is readily available on many development 
-boards and it is a self contained medium size example and explores
-some different aspects of a system.  The *vgasys* has two 
-main components:
+not as useful these days - it is readily available on many 
+development boards and it is a self contained medium size 
+example and explores some different aspects of a complex 
+digital system.  The *vgasys* has two main components:
 
  1. video color bar generator
  2. video sync (drives the VGA signals with the 
@@ -151,12 +151,12 @@ Example source [bsv](), [chisel](), and [myhdl]().
 Math System (ex7\_mathsys)
 ---------------------------
 This system is some what nonsensical but it lets us build off
-the previous and explore different aspects.  The system will be
-defined as:
+the previous and explore different aspects of the languages.  
+The system will be defined as:
 
-    z[n] = w[n] + v[n-D] + H1{v[n]} + F{x[n] + y[n]} * H2{v[n]}
+    z[n] = (v[n] * F{y[n] + x[n]}) + H{v[n]} + v[n-D]
 
-where *H1* and *H2* are the *mathsop* (FIR filters) and *F* is
+where *H* is the *mathsop* (FIR filter) and *F* is
 another system described in the [example description]().
 
 Example source [bsv](), [chisel](), and [myhdl]().
@@ -165,12 +165,10 @@ Example source [bsv](), [chisel](), and [myhdl]().
 Contributing
 =============
 It is difficult (impossible?) to be an expert in every language.
-My goal is not to be a language expert but to successfully use the
-tools to build my designs.
 Majority of my past experience is with Verilog and VHDL but I have been
 using MyHDL for a considerable amount of time and consequently use V\* 
 less and less (I am reminded often how much VHDL I have forgotten, 
-lack of use).
+lack of use).  
 
 If you have suggestions for improvements or version for the incomplete
 code leave a comment or generate a pull-request.  If you provide an
@@ -182,13 +180,13 @@ successfully.  To run the tests:
 
     >> python test\_<example>
 
-Each completed example has a test and each example has verified the 
+Each completed example has a test and has verified the 
 generated Verilog.  Each incomplete example has Verilog stubs and 
 tests.  The incomplete examples tests can be run and indicate the
 non-implemented tests fail.
 
 Note, for the first four examples I probably will not make many
 changes since these were the versions used in the presentation.
-Because of different constraints I realize some language features
-were not used in the first four examples.
+Also, because of different constraints I realize some language 
+features were not used in the first four examples.
 
