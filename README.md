@@ -77,8 +77,8 @@ Example source [bsv](), [chisel](), and [myhdl]().
 Greatest Common Denominator (ex3\_zpexgcd)
 ------------------------------------------
 Computes the greatest common denominator.  Two of the three
-alt.hdls provided this as an example - I included it in the
-presentation.
+alt.hdls provided this as an example - I was compelled to 
+include it in the presentation.
 
 Example source [bsv](), [chisel](), and [myhdl]().
 
