@@ -118,7 +118,7 @@ updated/completed versions.
 
 Median Filter (ex5\_medfilt)
 ----------------------------
-Another filter example (give me a break).  Well this one is 
+Another filter example (give me a break) but this one is 
 slightly different.  The median calculation involves a **sort**.
 Given a list/array/vector of values sort and find the middle.
 In image processing a median filter is often used to remove *noise*
