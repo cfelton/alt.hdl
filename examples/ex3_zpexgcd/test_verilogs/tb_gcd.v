@@ -28,7 +28,7 @@ module tb_gcd;
 		    .a(a), .b(b), .c(cm),
 		    .start(start), .finished(fm));
    
-   /** the bluespec verilog (wrapper) */
+   /** the bsv verilog (wrapper) */
    mb_gcd dut_bsv(.clock(clock), .reset(reset), 
                   .a(a), .b(b), .c(cb),
 		  .start(start), .finished(fb));
