@@ -118,11 +118,11 @@ updated/completed versions.
 
 Median Filter (ex5\_medfilt)
 ----------------------------
-Another filter example - give me a break.  Well this one is 
-slightly different.  The median calculation involves a **sort**!.
+Another filter example (give me a break).  Well this one is 
+slightly different.  The median calculation involves a **sort**.
 Given a list/array/vector of values sort and find the middle.
 In image processing a median filter is often used to remove *noise*
-from and image ([millions of examples via google](https://www.google.com/search?espv=210&es_sm=122&tbm=isch&q=image+processing+median+filter&oq=image+processing+median+filter&gs_l=img.3..0i24.6606.8763.0.8954.17.16.0.0.0.2.141.1083.12j4.16.0....0...1c.1.38.img..15.2.228.0fybRBHYu2k&bav=on.2,or.r_cp.r_qf.&bvm=bv.63808443,d.aWc,pv.xjs.s.en_US.9CjFb4DKbRI.O&biw=1217&bih=1434&dpr=1#pws=0&q=image+processing+median+filter&tbm=isch)).
+from and image ([various examples via google](https://www.google.com/search?espv=210&es_sm=122&tbm=isch&q=image+processing+median+filter&oq=image+processing+median+filter&gs_l=img.3..0i24.6606.8763.0.8954.17.16.0.0.0.2.141.1083.12j4.16.0....0...1c.1.38.img..15.2.228.0fybRBHYu2k&bav=on.2,or.r_cp.r_qf.&bvm=bv.63808443,d.aWc,pv.xjs.s.en_US.9CjFb4DKbRI.O&biw=1217&bih=1434&dpr=1#pws=0&q=image+processing+median+filter&tbm=isch)).
 
 Median example source [bsv](), [chisel](), and [myhdl]().
 
