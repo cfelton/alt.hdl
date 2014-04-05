@@ -71,7 +71,8 @@ and then multiplies by a constant (constant is parameterizable).
     v[n] = (x[n] + y[n]) * M
 
 This is a non-registered version.  A register version 
-is used in the *ex7\_mathsys* example.
+is used in the *ex7\_mathsys* example.  Also note, this example
+does not handle overflow (the tests show the overflow).
 
 Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex2_mathadds/bsv/maths1.bsv), 
 [chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex2_mathadds/chisel/maths1.scala), 

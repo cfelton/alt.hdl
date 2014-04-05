@@ -34,24 +34,23 @@ def _prep_cosim(args, **sigs):
 
 
 def median(x):
-    """ compute the median of the list/array x
-    This sort is the sort network used in the HDL 
-    implementations
+    """ compute the meidan of the list/array x
+    This sort is the sort network used in the HDL
     """
     N = len(x)
-    t = [0 for _ in range(N)]
-    z = copy(x)
+    def compare_stage(z, stage, N):
+        t,k = copy(z), 0 if (stage%2) else 1        
+        for ii,zd in range(k ,N-1, 2):
+            t[ii] = min(zd, z[ii+1])
+            t[ii+1] = max(zd, z[ii+1])
+        return t
 
+    z = x
     for stage in range(N):
-        k = 0 if (stage%2) else 1
-        for ii in range(k, N-1, 2):
-            t[ii] = min(z[ii], z[ii+1])
-            t[ii+1] = max(z[ii], z[ii+1])
-            z[ii] = t[ii];
-            z[ii+1] = t[ii+1]
+        z = compare_stage(z, stage, N)
 
     return z[N//2], z
-
+            
 
 def test_median(args):
     N = args.N
@@ -108,9 +107,11 @@ def test_median(args):
                     emed = sorted(twin)[N//2]
                     print("%8d: [%5d, %5d] mb %5d,  mc %5d,  mm %5d" % \
                           (now(), emed, fmed, mbmed, mcmed, mmmed))
-
+                    assert emed == fmed, "reference function failed"
+                    assert emed == mmmed, "myhdl invalid median"
                     yield clock.posedge
             except Exception,err:
+                print("** simulation ERROR **")
                 yield delay(100)
                 print(err)
                 raise err
