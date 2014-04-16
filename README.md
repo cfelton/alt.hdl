@@ -138,6 +138,8 @@ from and image ([various examples via google](https://www.google.com/search?espv
 Median example source [bsv](), [chisel](), and [myhdl]().
 Median filter example source [bsv](), [chisel](), and [myhdl]().
 
+[Here](http://www.fpgarelated.com/showarticle/578.php) is a 
+write-up describing the median calculation implementation.
 
 VGA system (ex6\_vgasys)
 ------------------------
