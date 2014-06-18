@@ -6,7 +6,6 @@ from __future__ import print_function
 import sys
 import os
 import argparse
-from array import array
 from copy import copy
 from random import randint
 
