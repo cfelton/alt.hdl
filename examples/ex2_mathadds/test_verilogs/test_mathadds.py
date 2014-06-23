@@ -36,6 +36,10 @@ def _prep_cosim(args, **sigs):
     # get the handle to the
     print("cosimulation setup ...")
     cmd = "vvp -m ./myhdl.vpi mathadds"
+
+    if not os.path.exists("vcd"):
+        os.makedirs("vcd")
+
     return Cosimulation(cmd, **sigs)
 
 
