@@ -37,6 +37,9 @@ def _prep_cosim(
     cmd = "iverilog -o vgasys %s " % (" ".join(files))
     os.system(cmd)
 
+    if not os.path.exists("vcd"):
+        os.makedirs("vcd")
+
     print("cosimulation setup ...")
     cmd = "vvp -m ./myhdl.vpi vgasys"
     gcosim = Cosimulation(cmd,
