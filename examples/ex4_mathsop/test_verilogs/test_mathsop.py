@@ -45,6 +45,10 @@ def _prep_cosim(args, **sigs):
     # get the handle to the
     print("cosimulation setup ...")
     cmd = "vvp -m ./myhdl.vpi mathsop"
+
+    if not os.path.exists("vcd"):
+        os.makedirs("vcd")
+
     return Cosimulation(cmd, **sigs)
 
 
@@ -149,6 +153,9 @@ def test_mathsop_verilogs(args):
         ax.set_yticklabels(('-.5FS', '0', '.5FS',))
 
     # save the figure
+    if not os.path.exists("plots"):
+        os.makedirs("plots")
+
     for ext in ('png','pdf',):
         fig.savefig("plots/mathsop_time_response.%s"%(ext))
     raw_input("continue")
