@@ -8,6 +8,7 @@ import os
 import argparse
 from copy import copy
 from random import randint
+import traceback
 
 from myhdl import *
 
@@ -25,6 +26,9 @@ def _prep_cosim(args, **sigs):
     cmd = "iverilog -o medtop %s " % (" ".join(files))
     os.system(cmd)
 
+    if not os.path.exists("vcd"):
+        os.makedirs("vcd")
+
     print("cosimulation setup ...")
     cmd = "vvp -m ./myhdl.vpi medtop"
     gcosim = Cosimulation(cmd, **sigs)
@@ -39,9 +43,9 @@ def median(x):
     N = len(x)
     def compare_stage(z, stage, N):
         t,k = copy(z), 0 if (stage%2) else 1        
-        for ii,zd in range(k ,N-1, 2):
-            t[ii] = min(zd, z[ii+1])
-            t[ii+1] = max(zd, z[ii+1])
+        for ii in range(k ,N-1, 2):
+            t[ii] = min(z[ii], z[ii+1])
+            t[ii+1] = max(z[ii], z[ii+1])
         return t
 
     z = x
@@ -113,16 +117,17 @@ def test_median(args):
                 print("** simulation ERROR **")
                 yield delay(100)
                 print(err)
+                traceback.print_exc()
                 raise err
 
             raise StopSimulation
 
-        return tbdut, tbclk, tbstim
+        return tbclk, tbstim
 
     traceSignals.name = 'vcd/_test'
     if os.path.isfile(traceSignals.name+'.vcd'):
         os.remove(traceSignals.name+'.vcd')
-    Simulation(traceSignals(_test)).run()
+    Simulation((traceSignals(_test),tbdut,)).run()
 
 
 if __name__ == '__main__':
