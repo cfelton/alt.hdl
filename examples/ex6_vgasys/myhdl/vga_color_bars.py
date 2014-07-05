@@ -37,7 +37,7 @@ def _update_cbars_with_max(P, width):
         print("%3d:  %08X" % (ii, cbars[ii]))
     
 
-def m_color_bars(dsys, vmem, resolution=(640,440), width=10):
+def m_color_bars(dsys, vmem, resolution=(640,480), width=10):
     """ generate a color bar pattern
     """
     global cbars
