@@ -19,14 +19,15 @@ def convert(args):
 def get_cli_args():
     parser = argparse.ArgumentParser(description="Convert colobar generator")
     parser.add_argument('--resolution', default="640,480", type=str,
-                        help="define the resolution, horizontal,veritical")
+                        help="define the resolution, <hor>x<ver>, e.g. 1280x720")
     parser.add_argument('--width', default=8, type=int,
                         help="define the pixel width in bits")
 
     args = parser.parse_args()
 
     res = args.resolution.replace(' ', '')
-    args.res = tuple(map(int, res.split(',')))
+    res = res.lower()
+    args.res = tuple(map(int, res.split('x')))
 
     return args
 
