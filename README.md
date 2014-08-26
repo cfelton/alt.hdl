@@ -1,3 +1,5 @@
+Alternative Hardware Description Languages
+===========================================
 This repository includes the examples used in the
 [EELive 2014 Hardware Design and the Grunge Era](http://www.eeliveshow.com/sanjose/schedule-builder/session-id/827205) 
 presentation.  In each example directory is a directory for 
@@ -45,6 +47,16 @@ examples are:
    to be considered as a source for language comparison.  For 
    instance, the examples do not include a traditional 
    state-machine design.
+
+Synthesis Results
+------------------
+Some of the examples provide synthesis results for each of 
+alt.hdl examples.  No timing constaints were used - let the
+tool determine *Fmax*.  Two FPGAs were targetted: Altera 
+Cyclone II EP2C35 and a Xilinx Spartan6 XC6SLX25.  The 
+results are not useful for comparing devices only langauge
+to language.  The results include resource utilization and 
+maximum clock frequency.
 
   
 Complete Examples 
@@ -112,6 +124,10 @@ Example source
 [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 
 [chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/chisel/sop1.scala), 
 and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/myhdl/sop1.py).
+
+### Synthesis Results
+![MATHSOP Synthesis]
+(https://cloud.githubusercontent.com/assets/766391/4039305/b3c8844c-2cc8-11e4-925f-ac6d2b667c9c.png)
 
 
 Incomplete Examples
