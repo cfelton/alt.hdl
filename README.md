@@ -101,6 +101,10 @@ Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3
 [chisel](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/chisel/gcd.scala), 
 and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/myhdl/gcd.py).
 
+### Synthesis Results
+![ZPEXGCD Synthesis]
+(https://cloud.githubusercontent.com/assets/766391/4039650/6241adc6-2cd0-11e4-8cc5-d5bf9a424942.png)
+
 
 Math SOP (ex4\_mathsop)
 -----------------------
