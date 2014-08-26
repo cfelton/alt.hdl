@@ -103,7 +103,7 @@ and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/
 
 ### Synthesis Results
 ![ZPEXGCD Synthesis]
-(https://cloud.githubusercontent.com/assets/766391/4039650/6241adc6-2cd0-11e4-8cc5-d5bf9a424942.png)
+(https://cloud.githubusercontent.com/assets/766391/4039716/c3261f72-2cd1-11e4-855f-fecb46870a88.png)
 
 
 Math SOP (ex4\_mathsop)
