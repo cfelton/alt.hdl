@@ -124,7 +124,7 @@ a given design.  Example, often the clock rate is higher than
 the sample rate and a single multiplier can be shared 
 (time-multiplexed) in the SOP calculation.  This type of description
 would rarely (if ever) be used for an actual FIR filter in an FPGA
-or ASIC.
+or ASIC but is good as a started example for an HDL.
 
 Example source 
 [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 
