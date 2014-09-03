@@ -108,10 +108,10 @@ and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/
 
 Math SOP (ex4\_mathsop)
 -----------------------
-This is a basic sum-of-products (SOP) also known as a *finite impulse
-response* (FIR) filter.  The operation is a simple SOP but when you
-combine the usage of the sliding window of the input signal with
-a set of coefficients it becomes a FIR filter.
+This is a basic sum-of-products (SOP) example and is implemented as a 
+*finite impulse response* (FIR) filter.  The operation is a simple SOP 
+but when you combine the usage of the sliding window of the input signal 
+with a set of coefficients it becomes a FIR filter.
 
 This is an overused data-path example - why in the world did
 I include it?  Couple reasons: it is useful to highlight
@@ -122,7 +122,9 @@ digital signals).
 This example does not architecturally optimize the SOP for
 a given design.  Example, often the clock rate is higher than
 the sample rate and a single multiplier can be shared 
-(time-multiplexed) in the SOP calculation.
+(time-multiplexed) in the SOP calculation.  This type of description
+would rarely (if ever) be used for an actual FIR filter in an FPGA
+or ASIC.
 
 Example source 
 [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 
