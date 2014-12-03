@@ -21,15 +21,16 @@ in the presentation and (as last writing) are **incomplete**
 (since they were not used, less motivation to complete them :)
 
     Complete Examples (used in the presentation)
-       ex1_wprcnt
-       ex2_mathadds
-       ex3_zpexgcd
-       ex4_mathsop
+       ex1_wprcnt   : a silly counter
+       ex2_mathadds : add and scale
+       ex3_zpexgcd  : greatest common denominator
+       ex4_mathsop  : sum-of-products (a.k.a FIR filter), non-optimized
        
     Incomplete Examples (not used in the presentation)
-       ex5_medfilt
-       ex6_vgasys	    
-       ex7_mathsys
+       ex5_medfilt : median filter, often used in image processing
+       ex6_vgasys  : VGA driver
+       ex7_mathsys : a more complicated math system
+       ex8_uart    : UART bus driver
 
 These examples are intended to be small digestible examples
 that are used to introduce the different alt.hdls.  The 
@@ -54,9 +55,8 @@ Some of the examples provide synthesis results for each of
 alt.hdl examples.  No timing constaints were used - let the
 tool determine *Fmax*.  Two FPGAs were targetted: Altera 
 Cyclone II EP2C35 and a Xilinx Spartan6 XC6SLX25.  The 
-results are not useful for comparing devices only langauge
-to language.  The results include resource utilization and 
-maximum clock frequency.
+results are not useful for comparing devices!  The results 
+include resource utilization and maximum clock frequency.
 
   
 Complete Examples 
@@ -124,7 +124,7 @@ a given design.  Example, often the clock rate is higher than
 the sample rate and a single multiplier can be shared 
 (time-multiplexed) in the SOP calculation.  This type of description
 would rarely (if ever) be used for an actual FIR filter in an FPGA
-or ASIC but is good as a started example for an HDL.
+or ASIC but is useful as as a starting point and example.
 
 Example source 
 [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 
