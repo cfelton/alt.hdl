@@ -15,3 +15,6 @@ script:
 #  - py.test examples/ex4_mathsop/test_verilogs
 #  - py.test examples/ex5_medfilt/test_verilogs
 #  - py.test examples/ex6_vgasys/test_verilogs
+
+notifications:
+  email: false
