@@ -5,6 +5,9 @@ python:
   
 install:
   - sudo apt-get install iverilog
+  - pip install numpy
+  - pip install scipy
+  - pip install matplotlib
   - chmod +x ./scripts/ci/install_myhdl.sh
   - ./scripts/ci/install_myhdl.sh
   
