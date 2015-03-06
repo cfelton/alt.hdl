@@ -2,6 +2,9 @@ language: python
 python:
   - "2.7"
   - "pypy"
+
+virtualenv:
+  system_site_packages: true
   
 before_install:
   - sudo apt-get install -qq iverilog
