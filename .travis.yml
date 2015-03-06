@@ -9,17 +9,18 @@ install:
   - ./scripts/ci/install_myhdl.sh
   
 script:
-  - pwd
   - cd examples/ex1_wprcnt/test_verilogs/
   - python test_wprcnt.py
   - cd ../../ex2_mathadds/test_verilogs/
   - python test_mathadds.py
   - cd ../../ex3_zpexgcd/test_verilogs/
   - python test_gcd.py
-#  - py.test examples/ex3_zpexgcd/test_verilogs
-#  - py.test examples/ex4_mathsop/test_verilogs
-#  - py.test examples/ex5_medfilt/test_verilogs
-#  - py.test examples/ex6_vgasys/test_verilogs
+  - cd ../../ex4_mathsop/test_verilogs/
+  - python test_mathsop.py
+  - cd ../../ex5_medfilt/test_verilogs/
+  - python test_median.py
+  - cd ../../ex6_vgasys/test_verilogs/
+  - python test_vgasys.py
 
 notifications:
   email: false
