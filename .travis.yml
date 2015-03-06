@@ -5,12 +5,13 @@ python:
   
 before_install:
   - sudo apt-get install iverilog
-  - pip install git+https://github.com/jandecaluwe/myhdl#egg=myhdl
+  - chmod +x ./scripts/ci/install_myhdl.sh
+  - ./scripts/ci/install_myhdl.sh
   
 script:
   - py.test examples/ex1_wprcnt/test_verilogs
   - py.test examples/ex2_mathadds/test_verilogs
   - py.test examples/ex3_zpexgcd/test_verilogs
   - py.test examples/ex4_mathsop/test_verilogs
-  - py.test examples/ex5_medfilt/test_verilogs
-  - py.test examples/ex6_vgasys/test_verilogs
+#  - py.test examples/ex5_medfilt/test_verilogs
+#  - py.test examples/ex6_vgasys/test_verilogs
