@@ -9,7 +9,9 @@ install:
   - ./scripts/ci/install_myhdl.sh
   
 script:
-  - python examples/ex1_wprcnt/test_verilogs/test_wprcnt.py
+  - pwd
+  - cd examples/ex1_wprcnt/test_verilogs/
+  - python test_wprcnt.py
 #  - py.test examples/ex2_mathadds/test_verilogs
 #  - py.test examples/ex3_zpexgcd/test_verilogs
 #  - py.test examples/ex4_mathsop/test_verilogs
