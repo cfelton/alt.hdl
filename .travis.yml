@@ -1,0 +1,16 @@
+language: python
+python:
+  - "2.7"
+  - "pypy"
+  
+before_install:
+  - sudo apt-get install iverilog
+  - pip install git+https://github.com/jandecaluwe/myhdl
+  
+script:
+  - py.test examples/ex1_wprcnt/test_verilogs
+  - py.test examples/ex2_mathadds/test_verilogs
+  - py.test examples/ex3_zpexgcd/test_verilogs
+  - py.test examples/ex4_mathsop/test_verilogs
+  - py.test examples/ex5_medfilt/test_verilogs
+  - py.test examples/ex6_vgasys/test_verilogs
