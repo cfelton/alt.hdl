@@ -3,7 +3,7 @@ python:
   - "2.7"
   - "pypy"
   
-before_install:
+install:
   - sudo apt-get install iverilog
   - chmod +x ./scripts/ci/install_myhdl.sh
   - ./scripts/ci/install_myhdl.sh
