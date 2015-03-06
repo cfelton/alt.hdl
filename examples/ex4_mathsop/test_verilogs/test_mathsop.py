@@ -159,7 +159,6 @@ def test_mathsop_verilogs(args):
 
     for ext in ('png','pdf',):
         fig.savefig("plots/mathsop_time_response.%s"%(ext))
-    raw_input("continue")
 
 
 if __name__ == '__main__':
