@@ -109,10 +109,8 @@ def test_vgasys(args):
             reset.next = not reset.active
 
             # Wait till a full screen has been updated
-            while mvd.update_cnt < 4:
+            while mvd.update_cnt < 1:
                  yield delay(1000)
-            #for ii in xrange(10000):
-            #    yield delay(1000)
 
             raise StopSimulation
 
