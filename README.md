@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/cfelton/alt.hdl.svg)](https://travis-ci.org/cfelton/alt.hdl)
+
 Alternative Hardware Description Languages
 ===========================================
 This repository includes the examples used in the
