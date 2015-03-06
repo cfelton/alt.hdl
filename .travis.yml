@@ -5,7 +5,7 @@ python:
   
 before_install:
   - sudo apt-get install iverilog
-  - pip install git+https://github.com/jandecaluwe/myhdl
+  - pip install git+https://github.com/jandecaluwe/myhdl#egg=myhdl
   
 script:
   - py.test examples/ex1_wprcnt/test_verilogs
