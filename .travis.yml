@@ -3,11 +3,13 @@ python:
   - "2.7"
   - "pypy"
   
+before_install:
+  - sudo apt-get install -qq iverilog
+  - sudo apt-get install -qq python-numpy 
+  - sudo apt-get install -qq python-scipy
+  - sudo apt-get install -qq python-matplotlib
+
 install:
-  - sudo apt-get install iverilog
-  - pip install numpy
-  - pip install scipy
-  - pip install matplotlib
   - pip install Pillow
   - chmod +x ./scripts/ci/install_myhdl.sh
   - ./scripts/ci/install_myhdl.sh
