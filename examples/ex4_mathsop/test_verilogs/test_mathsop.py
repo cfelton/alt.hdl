@@ -19,6 +19,7 @@ import array
 import numpy as np
 from scipy import signal
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib import mlab
 
