@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/cfelton/alt.hdl.svg)](https://travis-ci.org/cfelton/alt.hdl)
+
 Alternative Hardware Description Languages
 ===========================================
 This repository includes the examples used in the
@@ -122,9 +125,10 @@ digital signals).
 This example does not architecturally optimize the SOP for
 a given design.  Example, often the clock rate is higher than
 the sample rate and a single multiplier can be shared 
-(time-multiplexed) in the SOP calculation.  This type of description
-would rarely (if ever) be used for an actual FIR filter in an FPGA
-or ASIC but is useful as as a starting point and example.
+(time-multiplexed) in the SOP calculation.  The description
+in this example would rarely (if ever) be used for an actual 
+FIR filter in an FPGA or ASIC but is useful as as a starting 
+point and digestable example.
 
 Example source 
 [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/bsv/sop1.bsv), 

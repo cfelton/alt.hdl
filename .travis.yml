@@ -1,0 +1,34 @@
+language: python
+python:
+  - "2.7"
+
+virtualenv:
+  system_site_packages: true
+  
+before_install:
+  - sudo apt-get install -qq iverilog
+  - sudo apt-get install -qq python-numpy 
+  - sudo apt-get install -qq python-scipy
+  - sudo apt-get install -qq python-matplotlib
+
+install:
+  - pip install Pillow
+  - chmod +x ./scripts/ci/install_myhdl.sh
+  - ./scripts/ci/install_myhdl.sh
+  
+script:
+  - cd examples/ex1_wprcnt/test_verilogs/
+  - python test_wprcnt.py
+  - cd ../../ex2_mathadds/test_verilogs/
+  - python test_mathadds.py
+  - cd ../../ex3_zpexgcd/test_verilogs/
+  - python test_gcd.py
+  - cd ../../ex4_mathsop/test_verilogs/
+  - python test_mathsop.py
+  - cd ../../ex5_medfilt/test_verilogs/
+  - python test_median.py
+  - cd ../../ex6_vgasys/test_verilogs/
+  - python test_vgasys.py
+
+notifications:
+  email: false
