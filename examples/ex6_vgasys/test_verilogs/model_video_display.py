@@ -235,7 +235,6 @@ class VideoDisplay(object):
         else:
             yield dsys.clock.posedge
             c.vsync += 1
-            print(c.vsync)
 
     def _state_ver_back_porch(self, dsys, vga, counters):
         """
