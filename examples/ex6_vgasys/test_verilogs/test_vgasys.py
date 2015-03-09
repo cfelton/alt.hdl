@@ -1,5 +1,4 @@
 
-
 from __future__ import division
 from __future__ import print_function
 
@@ -59,7 +58,7 @@ def test_vgasys(args):
     # @note: these have to stay fixed, the alt.hdl are converted
     #        to verilog in a separate step.  Each conversion 
     #        would need to be udpated to match the following.
-    res = (640, 480,)  # (80,60,),  (640,480,)
+    res = (640, 480,)  
     line_rate = int(31250)
 
     clock = Clock(0, frequency=50e6)
@@ -109,9 +108,8 @@ def test_vgasys(args):
             reset.next = not reset.active
 
             # Wait till a full screen has been updated
-            while mvd.update_cnt < 2:
-                 yield delay(1000)
-                 print('.', end='')
+            while mvd.update_cnt < 1:
+                 yield delay(10000)
 
             raise StopSimulation
 
@@ -121,7 +119,6 @@ def test_vgasys(args):
     if os.path.isfile('vcd/_test.vcd'):
         os.remove('vcd/_test.vcd')
 
-    #Simulation(_test()).run()
     traceSignals.timescale = '1ns'
     traceSignals.name = 'vcd/_test'
     Simulation((traceSignals(_test), tbdut,)).run()

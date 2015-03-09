@@ -133,11 +133,17 @@ class VideoDisplay(object):
                     yield self.StateFuncs[self.state](dsys, vga, counters)
 
         # monitor, sample each variable at each clock
+        pmon = Signal(bool(0))
         @always(dsys.clock.posedge)
         def g_monitor():
             _state.next = self.state._name
             hcnt.next = counters.hcnt
             vcnt.next = counters.vcnt
+            if hcnt != 0 and hcnt == vcnt and not pmon:
+                print(int(hcnt), int(vcnt))
+                pmon.next = True
+            else:
+                pmon.next = False
                         
         return g_capture_vga, g_monitor
 
@@ -229,6 +235,7 @@ class VideoDisplay(object):
         else:
             yield dsys.clock.posedge
             c.vsync += 1
+            print(c.vsync)
 
     def _state_ver_back_porch(self, dsys, vga, counters):
         """
