@@ -4,7 +4,7 @@
 Alternative Hardware Description Languages
 ===========================================
 This repository includes the examples used in the
-[EELive 2014 Hardware Design and the Grunge Era](http://www.eeliveshow.com/sanjose/schedule-builder/session-id/827205) 
+[EELive 2014 Hardware Design and the Grunge Era](http://my.presentations.techweb.com/events/eelive/san-jose/2014/esc) 
 presentation.  In each example directory is a directory for 
 each alt.hdl: 
 [bsv (bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
