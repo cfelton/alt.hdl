@@ -1,7 +1,7 @@
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import print_function, division
 
+import myhdl
 from myhdl import *
 
 from mysigs import Clock, Reset
@@ -11,16 +11,17 @@ from vga_intf import VideoMemory
 
 from vga_timing_params import calc_timings
         
+        
 def m_vga_sync(
-    # [ports and interfaces}
+    # [ports and interfaces]
     sys,   # system bundle of signals, clock, reset
     vga,   # signals for the VGA
     vmem,  # the video memory interface
 
     # [parameters]
-    resolution = (640,480,), # resolution in pixels
-    refresh_rate = 60,      # refresh rate in Hz (vertical rate)
-    line_rate = 31250    # line rate in Hz (horizontral rate)
+    resolution = (640, 480,),  # resolution in pixels
+    refresh_rate = 60,         # refresh rate in Hz (vertical rate)
+    line_rate = 31250          # line rate in Hz (horizontral rate)
     ):
     """
     The following is the generation of the signals required 
@@ -72,9 +73,9 @@ def m_vga_sync(
     # compute the limits (counter limits) for the vsync
     # and hsync timings.  Review the cacl_timing function
     # for defintions of A,B,C,D,E,O,P,Q,R,S, and Z
-    (A,B,C,D,E,O,
-     P,Q,R,S,X,Z,) = calc_timings(clock.frequency, resolution,
-                                  refresh_rate, line_rate)
+    (A, B, C, D, E, O,
+     P, Q, R, S, X, Z,) = calc_timings(clock.frequency, resolution,
+                                       refresh_rate, line_rate)
     FullScreen = O
 
     # counters to count the pixel clock (clock)
@@ -177,13 +178,6 @@ def m_vga_sync(
         else:
             vga.active.next = False
 
-
-    #_state = Signal(intbv(0)[8:])
-    #@always_comb
-    #def tmon():
-    #    _state.next = int(vga.state._val._index)
-
-    
     # map the video memory pixels to the VGA bus
     @always_comb
     def rtl_map():
