@@ -1,5 +1,5 @@
 #!/bin/sh
-git clone https://github.com/jandecaluwe/myhdl
+git clone -b mep-114 https://github.com/jandecaluwe/myhdl
 cd myhdl
 python setup.py install
 make -C cosimulation/icarus
