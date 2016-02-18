@@ -5,6 +5,7 @@ import os
 from array import array
 from copy import deepcopy
 
+import myhdl
 from myhdl import *
 from PIL import Image
 
@@ -81,6 +82,7 @@ class VideoDisplay(object):
 
         im.save('test_vgasys_frame_%d.png' % (framen))
 
+    @myhdl.module
     def process(self, dsys, vga):
         """
         """

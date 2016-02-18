@@ -9,7 +9,8 @@ class Clock(myhdl.SignalType):
         self.frequency = frequency
         self.period = 1./frequency
         myhdl.SignalType.__init__(self, bool(val))
-        
+      
+    @myhdl.module  
     def gen(self):
         """ generate a clock """
         @instance

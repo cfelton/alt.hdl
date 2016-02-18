@@ -8,8 +8,7 @@
 # easy language (author knows well).  No need for complicated
 # compile (builds) etc.
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import print_function, division
 
 import os
 import argparse
@@ -18,16 +17,21 @@ import math
 
 from myhdl import *
 
+
 def _prep_cosim(args, **sigs):
     """ prepare the cosimulation environment
     """
-    # compile the verilog files with the verilog simulator
-    files = ['../myhdl/mm_maths1.v',
-             '../bsv/mb_maths1.v',
-             '../bsv/mkMaths1.v',
-             '../chisel/generated/mc_maths1.v',
-             './tb_mathadds.v',]
+    # compile the verilog files with the verilog simulator,
+    # file paths relative to the ex2_mathadds
+    files = ['myhdl/mm_maths1.v',
+             'bsv/mb_maths1.v',
+             'bsv/mkMaths1.v',
+             'chisel/generated/mc_maths1.v',
+             'test_verilogs/tb_mathadds.v',]
 
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex2_mathadds', ff)
+        
     print("compiling ...")
     cmd = "iverilog -o mathadds %s " % (" ".join(files))
     print("  *%s" %  (cmd))
@@ -43,7 +47,7 @@ def _prep_cosim(args, **sigs):
     return Cosimulation(cmd, **sigs)
 
 
-def test_mathadds(args):
+def test_mathadds(expath, args=None):
     """
     The maths1 was a simple two input (x,y) and a single
     output (v).  The verilog modules should look something
@@ -53,6 +57,10 @@ def test_mathadds(args):
     The type/size of the inputs and outputs was defined at
     the conversion, 16 bit inputs and 
     """
+    if args is None:
+        args = Namespace()
+    args.expath = expath
+    
     clock = Signal(bool(0))
     reset = ResetSignal(0, active=0, async=True)
     imin,imax = -2**15, 2**15
@@ -90,4 +98,4 @@ def test_mathadds(args):
 
 
 if __name__ == '__main__':
-    test_mathadds(Namespace())
+    test_mathadds(expath='../..')

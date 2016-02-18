@@ -1,6 +1,5 @@
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import print_function, division
 
 import os
 import argparse
@@ -10,13 +9,18 @@ import fractions
 
 from myhdl import *
 
+
 def _prep_cosim(args, **sigs):
-    # compile the verilog files with the verilog simulator
-    files = ['../myhdl/mm_gcd.v',
-             '../bsv/mb_gcd.v',
-             '../bsv/mkGCD.v',
-             '../chisel/generated/mc_gcd.v',
-             './tb_gcd.v',]
+    # compile the verilog files with the verilog simulator,
+    # file paths relateive to ex3_zpexgcd
+    files = ['myhdl/mm_gcd.v',
+             'bsv/mb_gcd.v',
+             'bsv/mkGCD.v',
+             'chisel/generated/mc_gcd.v',
+             'test_verilogs/tb_gcd.v',]
+             
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex3_zpexgcd', ff)
 
     print("compiling ...")
     cmd = "iverilog -o gcd %s " % (" ".join(files))
@@ -32,7 +36,11 @@ def _prep_cosim(args, **sigs):
 
     return Cosimulation(cmd, **sigs)
 
-def test_gcd(args=None):
+def test_gcd(expath, args=None):
+    if args is None:
+        args = Namespace(N=100)
+    args.expath = expath
+    
     clock = Signal(bool(0))
     reset = ResetSignal(0, active=0, async=True)
     a,b = [Signal(intbv(0)[32:]) for _ in range(2)]
@@ -93,4 +101,4 @@ if __name__ == '__main__':
     parser.add_argument('-N', type=int, default=100,
                         help="number of loops to test")
     args = parser.parse_args()
-    test_gcd(args)
+    test_gcd(expath='../..', args=args)

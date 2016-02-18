@@ -12,10 +12,12 @@ module tb_vgasys;
    wire mm_pxlen, mm_active;
    wire [9:0] mm_red, mm_blue, mm_green;     
 	
+`ifdef VTRACE
    initial begin
       $dumpfile("vcd/_tb_vgasys.vcd");
       $dumpvars(0, tb_vgasys);	
    end
+`endif
 
    initial begin
       $from_myhdl(clock, reset, vselect);

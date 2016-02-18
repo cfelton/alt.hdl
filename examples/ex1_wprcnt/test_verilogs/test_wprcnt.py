@@ -21,11 +21,15 @@ from myhdl import *
 def _prep_cosim(args, **sigs):
     """ prepare the cosimulation environment
     """
-    # compile the verilog files with the verilog simulator
-    files = ['../myhdl/mm_cnt.v',
-             '../bsv/mkCnt.v',
-             '../chisel/generated/mc_cnt.v',
-             './tb_wprcnt.v',]
+    # compile the verilog files with the verilog simulator,
+    # file paths relative to the ex1_wprcnt directory
+    files = ['myhdl/mm_cnt.v',
+             'bsv/mkCnt.v',
+             'chisel/generated/mc_cnt.v',
+             'test_verilogs/tb_wprcnt.v',]
+             
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex1_wprcnt', ff)
 
     print("compiling ...")
     cmd = "iverilog -o wprcnt %s " % (" ".join(files))
@@ -42,13 +46,16 @@ def _prep_cosim(args, **sigs):
     return Cosimulation(cmd, **sigs)
 
 
-def test_wprcnt(args):
-    """
-    """
+def test_wprcnt(expath, args=None):
+    """ """
+    if args is None:
+        args = Namespace()
+    args.expath = expath
+    
     clock = Signal(bool(0))
     reset = ResetSignal(0, active=0, async=True)
-    outb,outc,outm = [Signal(intbv(0, min=0, max=32))
-                      for _ in range(3)]
+    outb, outc, outm = [Signal(intbv(0, min=0, max=32))
+                        for _ in range(3)]
 
     tbdut =  _prep_cosim(args, clock=clock, reset=reset,
                          outb=outb, outc=outc, outm=outm)
@@ -77,4 +84,4 @@ def test_wprcnt(args):
 
 
 if __name__ == '__main__':
-    test_wprcnt(Namespace())
+    test_wprcnt(expath='../../')

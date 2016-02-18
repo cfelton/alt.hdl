@@ -1,4 +1,5 @@
 
+import myhdl
 from myhdl import *
 
 from vga_intf import System
@@ -37,6 +38,7 @@ def _update_cbars_with_max(P, width):
         print("%3d:  %08X" % (ii, cbars[ii]))
     
 
+@myhdl.module
 def m_color_bars(dsys, vmem, resolution=(640,480), width=10):
     """ generate a color bar pattern
     """

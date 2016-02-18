@@ -8,8 +8,7 @@
 # easy language (author knows well).  No need for complicated
 # compile (builds) etc.
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import print_function, division
 
 import os
 import argparse
@@ -29,15 +28,20 @@ from myhdl import *
 def _prep_cosim(args, **sigs):
     """ prepare the cosimulation environment
     """
-    # compile the verilog files with the verilog simulator
-    files = ['../myhdl/mm_sop1.v',
-             '../myhdl/mm_sop2.v',
-             '../bsv/mkSOP1.v',
-             '../bsv/mkSOP2.v',
-             '../chisel/generated/mc_sop1.v',
-             #'../chisel/generated/mc_sop2.v',
-             './tb_mathsop.v',]
+    # compile the verilog files with the verilog simulator,
+    # file paths are relative to exp4_mathsop
+    files = ['myhdl/mm_sop1.v',
+             'myhdl/mm_sop2.v',
+             'bsv/mkSOP1.v',
+             'bsv/mkSOP2.v',
+             'chisel/generated/mc_sop1.v',
+             #'../chisel/generated/mc_sop2.v',  # broken
+             'test_verilogs/tb_mathsop.v',]
 
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex4_mathsop', ff)
+        assert os.path.isfile(files[ii]), "missing file {}".format(files[ii])
+        
     print("compiling ...")
     cmd = "iverilog -o mathsop %s " % (" ".join(files))
     print("  *%s" %  (cmd))
@@ -72,18 +76,26 @@ def _create_chirp(args, imax=8):
     return xin
 
 
-def test_mathsop_verilogs(args):
+def test_mathsop_verilogs(expath, args=None):
     """the SOP (FIR filter) test stimulus
-    """
+    """       
+    if args is None:
+        args = Namespace(Nsamps=1024*4, # number of samples to test
+                         Fs=1e3,        # sample rate
+                         mmver=1,       # two MyHDL versions
+                         trace=True     # enable tracing
+                )
+    args.expath = expath
+    
     clock = Signal(bool(0))
     reset = ResetSignal(0, active=0, async=True)
 
     imin,imax = -2**15, 2**15
     x = Signal(intbv(0, min=imin, max=imax))
-    (ym1,ym2,
-     yb1,yb2,
-     yc1,yc2,) = [Signal(intbv(0, min=imin, max=imax))
-                  for _ in range(6)]
+    (ym1, ym2,
+     yb1, yb2,
+     yc1, yc2,) = [Signal(intbv(0, min=imin, max=imax))
+                   for _ in range(6)]
 
     tbdut = _prep_cosim(args, clock=clock, reset=reset,
                         x=x, ym1=ym1, ym2=ym2, 
@@ -119,9 +131,9 @@ def test_mathsop_verilogs(args):
             if ii >= args.Nsamps:
                 break
             x.next = xx
-            ym1v[ii],ym2v[ii] = ym1,ym2
-            yb1v[ii],yb2v[ii] = yb1,yb2
-            yc1v[ii],yc2v[ii] = yc1,yc2
+            ym1v[ii], ym2v[ii] = ym1, ym2
+            yb1v[ii], yb2v[ii] = yb1, yb2
+            yc1v[ii], yc2v[ii] = yc1, yc2
 
             yield clock.posedge                                   
 
@@ -168,5 +180,4 @@ if __name__ == '__main__':
         mmver=1,       # two MyHDL versions
         trace=True     # enable tracing
     )
-    test_mathsop_verilogs(args)
-
+    test_mathsop_verilogs(expath='../..', args=args)

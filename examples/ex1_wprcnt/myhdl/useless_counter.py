@@ -1,17 +1,24 @@
 
 import myhdl
-from myhdl import Signal, ResetSignal, intbv, always_seq
+from myhdl import Signal, ResetSignal, intbv, always_seq, always_comb
 
 
 @myhdl.module
 def mm_cnt(clock, reset, out):
+    counter = Signal(out.val)
+    
     @always_seq(clock.posedge, reset=reset)
     def beh():
-        if out <= 30:
-            out.next = out + 1
+        if counter <= 30:
+            counter.next = counter + 1
         else:
-            out.next = out - 1
-    return beh
+            counter.next = counter - 1
+            
+    @always_comb
+    def beh_assign():
+        out.next = counter 
+        
+    return beh, beh_assign
 
 
 clock = Signal(bool(0))

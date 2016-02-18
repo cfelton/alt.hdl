@@ -6,10 +6,12 @@ from __future__ import print_function
 import sys
 import os
 import argparse
+from argparse import Namespace
 from copy import copy
 from random import randint
 import traceback
 
+import myhdl
 from myhdl import *
 
 
@@ -17,11 +19,17 @@ def _prep_cosim(args, **sigs):
     """
     """
 
-    files = ['../bsv/mb_medtop.v',
-             '../chisel/generated/mc_medtop.v',
-             '../myhdl/mm_medtop.v',
-             'tb_median.v']
+    # the verilog files to be verified, the file paths
+    # are relative to ex5_medfilt
+    files = ['bsv/mb_medtop.v',
+             'chisel/generated/mc_medtop.v',
+             'myhdl/mm_medtop.v',
+             'test_verilogs/tb_median.v']
 
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex5_medfilt', ff)
+        assert os.path.isfile(files[ii]), "missing file {}".format(files[ii])
+        
     print("compiling ...")
     cmd = "iverilog -o medtop %s " % (" ".join(files))
     os.system(cmd)
@@ -55,7 +63,11 @@ def median(x):
     return z[N//2], z
             
 
-def test_median(args):
+def test_median(expath, args=None):
+    if args is None:
+        args = Namespace(N=9, Nloops=27, trace=False)
+    args.expath = expath
+    
     N = args.N
 
     clock = Signal(bool(0))
@@ -79,7 +91,9 @@ def test_median(args):
                         mcmed=mcmed, mcdvo=mcdvo, 
                         mmmed=mmmed, mmdvo=mmdvo,
                         finished=finished)
-    def _test():
+                        
+    @myhdl.module
+    def bench():
         
         @always(delay(5))
         def tbclk():
@@ -124,13 +138,18 @@ def test_median(args):
 
         return tbclk, tbstim
 
-    traceSignals.name = 'vcd/_test'
-    if os.path.isfile(traceSignals.name+'.vcd'):
-        os.remove(traceSignals.name+'.vcd')
-    Simulation((traceSignals(_test),tbdut,)).run()
+    g = bench()
+    if args.trace:
+        traceSignals.directory = 'vcd'
+        traceSignals.name = 'test_median'
+        if os.path.isfile(traceSignals.name+'.vcd'):
+            os.remove(traceSignals.name+'.vcd')
+        g = traceSignals(g)
+        
+    Simulation((g, tbdut,)).run()
 
 
 if __name__ == '__main__':
-    args = argparse.Namespace(N=9, Nloops=27)
-    test_median(args)
+    args = argparse.Namespace(N=9, Nloops=27, trace=False)
+    test_median(expath='../..', args=args)
 

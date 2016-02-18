@@ -2,13 +2,16 @@
 from __future__ import division
 from __future__ import print_function
 
+# @todo: need a better way to do this
 import sys
 sys.path.append('../myhdl')
+
 import os
 import argparse
 from argparse import Namespace
 from array import array
 
+import myhdl
 from myhdl import *
 
 # resuse some of the interfaces
@@ -29,9 +32,13 @@ def _prep_cosim(
     """
     """
     # compile the verilog files with the verilog simulator
-    files = ['../myhdl/mm_vgasys.v',
-             'tb_vgasys.v']
+    files = ['myhdl/mm_vgasys.v',
+             'test_verilogs/tb_vgasys.v']
 
+    for ii, ff in enumerate(files):
+        files[ii] = os.path.join(args.expath, 'ex6_vgasys', ff)
+        assert os.path.isfile(files[ii]), "missing file {}".format(files[ii])
+        
     print("compiling ...")
     cmd = "iverilog -o vgasys %s " % (" ".join(files))
     os.system(cmd)
@@ -54,7 +61,11 @@ def _prep_cosim(
     return gcosim
     
 
-def test_vgasys(args):
+def test_vgasys(expath, args=None):
+    if args is None:
+        args = Namespace(trace=False)
+    args.expath = expath
+    
     # @note: these have to stay fixed, the alt.hdl are converted
     #        to verilog in a separate step.  Each conversion 
     #        would need to be udpated to match the following.
@@ -74,7 +85,8 @@ def test_vgasys(args):
                         clock, reset, vselect,
                         bvga, cvga, mvga)
 
-    def _test():
+    @myhdl.module
+    def bench():
 
         # group global signals
         dsys = System(clock=clock, reset=reset)
@@ -119,10 +131,14 @@ def test_vgasys(args):
     if os.path.isfile('vcd/_test.vcd'):
         os.remove('vcd/_test.vcd')
 
-    traceSignals.timescale = '1ns'
-    traceSignals.name = 'vcd/_test'
-    Simulation((traceSignals(_test), tbdut,)).run()
+    g = bench()
+    if args.trace:
+        traceSignals.timescale = '1ns'
+        traceSignals.name = 'vcd/test_vgasys'
+        g = traceSignals(g)
+        
+    Simulation((g, tbdut,)).run()
 
 
 if __name__ == '__main__':
-    test_vgasys(Namespace())
+    test_vgasys(expath='../..')
