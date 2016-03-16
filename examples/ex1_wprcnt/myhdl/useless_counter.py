@@ -3,7 +3,7 @@ import myhdl
 from myhdl import Signal, ResetSignal, intbv, always_seq, always_comb
 
 
-@myhdl.module
+@myhdl.block
 def mm_cnt(clock, reset, out):
     counter = Signal(out.val)
     
@@ -25,5 +25,13 @@ clock = Signal(bool(0))
 reset = ResetSignal(0, active=0, async=True)
 out = Signal(intbv(0, min=0, max=32))
 
-myhdl.toVerilog.no_testbench = True
-myhdl.toVerilog(mm_cnt(clock, reset, out))
+# the latest myhdl 1.0 is moving to the "block" decorator,
+# the simulation and conversion methods are available from
+# the `BlockInstance`
+# myhdl.toVerilog.no_testbench = True
+# myhdl.toVerilog(mm_cnt(clock, reset, out))
+
+inst = mm_cnt(clock, reset, out)
+# this is wrong, should keep the same names
+inst.convert(tb=False)
+
