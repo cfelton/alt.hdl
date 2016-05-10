@@ -108,6 +108,12 @@ and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/
 ![ZPEXGCD Synthesis]
 (https://cloud.githubusercontent.com/assets/766391/4039716/c3261f72-2cd1-11e4-855f-fecb46870a88.png)
 
+Comment on the synthesis results, the implementations are not identical, 
+the myhdl version has an extra register stage on the ouptut, in such a 
+small example this makes a difference.  The myhdl version can be modified
+(e.g. remove the registered outputs) and the resource usage will be 
+indetical for all three.
+
 
 Math SOP (ex4\_mathsop)
 -----------------------
