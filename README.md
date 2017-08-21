@@ -18,8 +18,8 @@ test environment.
 
 This repository contains two groups of examples: 
 **complete** are the examples used in the presentation and are
-fully finished and working examples.  The second, set of 
-examples are slightly larger examples but were not included
+fully finished and working examples.  The second set of 
+examples are slightly larger examples not included
 in the presentation and (as last writing) are **incomplete**
 (since they were not used, less motivation to complete them :)
 
