@@ -5,7 +5,7 @@ Alternative Hardware Description Languages
 ===========================================
 This repository includes the examples used in the
 [EELive 2014 Hardware Design and the Grunge Era](http://my.presentations.techweb.com/events/eelive/san-jose/2014/esc) 
-presentation.  In each example directory is a directory for 
+presentation.  In each example directory, is a sub-directory for 
 each alt.hdl: 
 [bsv (bluespec)](http://www.bluespec.com/high-level-synthesis-tools.html), 
 [chisel](https://chisel.eecs.berkeley.edu/), 
@@ -105,6 +105,7 @@ Example source [bsv](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3
 and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/myhdl/gcd.py).
 
 ### Synthesis Results
+
 ![ZPEXGCD Synthesis]
 (https://cloud.githubusercontent.com/assets/766391/4039716/c3261f72-2cd1-11e4-855f-fecb46870a88.png)
 
@@ -142,6 +143,7 @@ Example source
 and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/myhdl/sop1.py).
 
 ### Synthesis Results
+
 ![MATHSOP Synthesis]
 (https://cloud.githubusercontent.com/assets/766391/4039305/b3c8844c-2cc8-11e4-925f-ac6d2b667c9c.png)
 
