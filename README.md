@@ -106,8 +106,7 @@ and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex3_zpexgcd/
 
 ### Synthesis Results
 
-![ZPEXGCD Synthesis]
-(https://cloud.githubusercontent.com/assets/766391/4039716/c3261f72-2cd1-11e4-855f-fecb46870a88.png)
+![ZPEXGCD Synthesis](https://cloud.githubusercontent.com/assets/766391/4039716/c3261f72-2cd1-11e4-855f-fecb46870a88.png)
 
 Comment on the synthesis results, the implementations are not identical, 
 the myhdl version has an extra register stage on the ouptut, in such a 
@@ -144,8 +143,7 @@ and [myhdl](https://github.com/cfelton/alt.hdl/blob/master/examples/ex4_mathsop/
 
 ### Synthesis Results
 
-![MATHSOP Synthesis]
-(https://cloud.githubusercontent.com/assets/766391/4039305/b3c8844c-2cc8-11e4-925f-ac6d2b667c9c.png)
+![MATHSOP Synthesis](https://cloud.githubusercontent.com/assets/766391/4039305/b3c8844c-2cc8-11e4-925f-ac6d2b667c9c.png)
 
 
 Incomplete Examples
